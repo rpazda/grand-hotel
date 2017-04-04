@@ -6,3 +6,7 @@
 	<hr>
 
 @endsection
+
+@section('footer')
+
+@endsection
