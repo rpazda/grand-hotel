@@ -11,17 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages/search');
-});
+/* most routes should call controller methods! */
+
+// a route defines behavior in response to a url. This route
+// calls SearchController's showWelcome method when the user
+// GETs http://localhost:8000/
+Route::get('/', 'SearchController@showWelcome');
+//Route::get('/', function () {
+
+	//return view('pages/search');
+//});
 
 Route::get('/login', function () {
     return view('pages/login');
 });
 
-Route::get('/search', function () {
-    return view('pages/search');
-});
+// same as the root page
+Route::get('/search', 'SearchController@showWelcome');
+//Route::get('/search', function () {
+//    return view('pages/search');
+//});
 
 Route::get('/friends', function () {
     return view('pages/friends');

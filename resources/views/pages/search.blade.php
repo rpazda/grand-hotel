@@ -51,9 +51,9 @@
 			</form>
 
 		</div>
-
+                
 		<div class="col s9">
-
+			<!--
 			<div class="row" id="room1">
 				<div class="col s12">
 
@@ -122,6 +122,44 @@
 
 				</div>
 			</div>
+			-->
+			<!-- new content here! The foreach loop iterates through an array of Room objects.
+			     Note that each object is essentially a record from the rooms entity in the database -->
+			@foreach($rooms as $room)
+				<div class="row">
+					<div class="col s12">
+
+					<div class="col s3 grey" style="height:200px;">
+						image
+					</div>
+
+					<div class="col s5">
+							<!-- this call in double braces extracts the value from this record under the 'room_id' column -->
+						<h5>Room {{ $room->room_id }}</h5>
+
+						<ul>
+							<li>Rate: ${{ $room->rate }}</li>
+							<li>Floor: {{ $room->floor }}</li>
+							<li>Type: {{ $room->room_type }}</li>
+							<li>Occupied: {{ $room->occupied }}</li>
+						</ul>
+					</div>
+
+					<div class="col s4">
+						
+						<a href="#" class="btn cyan" style="margin-top: 10px">
+							Room Details    
+						</a>
+
+						<a href="#" class="btn cyan" style="margin-top: 10px">
+							Book Room   
+						</a>
+
+					</div>
+
+				</div>
+				</div>
+			@endforeach
 			<div class="row" id="room3"></div>
 			
 
