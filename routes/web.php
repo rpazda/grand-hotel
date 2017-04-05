@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages/search');
 });
 
 Route::get('/login', function () {
@@ -35,8 +35,8 @@ Route::get('/reservations', function () {
     return view('pages/reservations');
 });
 
-Route::get('/admin', function () {
-    return view('pages/admin');
+Route::get('/staff', function () {
+    return view('pages/staff');
 });
 
 

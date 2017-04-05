@@ -6,7 +6,6 @@
 	<h2>Welcome to the login page!</h2>
 	<hr>
 
-	<body>
     <!-- page content -->
 
 		<div class="row">
@@ -76,8 +75,6 @@
 			</div>
 
 		</div>
-
-  	</body>
 
 @endsection
 

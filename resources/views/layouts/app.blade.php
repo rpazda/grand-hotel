@@ -24,7 +24,7 @@
 
                 <nav class="deep-purple">
                     <div class="nav-wrapper">
-                        <a href="index.html" class="brand-logo">&nbsp; Hotel California</a>
+                        <a href="{{ url('search')}}" class="brand-logo">&nbsp; Hotel California</a>
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a href="{{ url('search') }}">Search</a></li>
                             <li><a href="{{ url('friends') }}">Friends</a></li>
@@ -39,7 +39,7 @@
                         <div class="right">
                         
                             @if(false)
-                                [USERNAME] 
+                                [USERNAME] <a href="{{ url('logout') }}" class="btn cyan">Login</a>
                             @else						
                                 <a href="{{ url('login') }}" class="btn cyan">Login</a>
                             @endif
@@ -61,15 +61,14 @@
                 <center>Group 17 - 2017</center>
                 </span>
             </div>
-
             
         </div>
 
-    <body>
+    </body>
 
 </html>
 
- @if (Auth::guest())
+@if (Auth::guest())
     <div class="container">
         @yield('contents')
     </div>
