@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    
     <h2>Reservations</h2>
 	<hr>
 
@@ -51,6 +51,5 @@
 
         </div>
     </div>
-
 @endsection
 
