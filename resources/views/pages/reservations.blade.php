@@ -17,35 +17,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>01/01/1999</td>
-                        <td>199</td>
+                @if($reservation_data)
+                    @foreach($reservation_data as $reservation)
+		    <tr>
+                        <td>{{ $reservation->reservationDate }}</td>
+                        <td>{{ $reservation->room }}</td>
                         <td>$350.00</td>
-                        <td>Yes<td>
+                        <td>
+			@if($reservation->paid == 1)
+				yes
+			@else
+				no
+			@endif
+
+			<td>
                         <td><btn class="btn cyan">View Details</btn></td>
+                        @if($reservation->paid == 0)
+			<td><a href="payment.html" class="btn green">Pay</a></td>
+			@endif
                     </tr>
-                    <tr>
-                        <td>01/01/1999</td>
-                        <td>199</td>
-                        <td>$350.00</td>
-                        <td>Yes<td>
-                        <td><btn class="btn cyan">View Details</btn></td>
-                    </tr>
-                    <tr>
-                        <td>01/01/1999</td>
-                        <td>199</td>
-                        <td>$350.00</td>
-                        <td>Yes<td>
-                        <td><btn class="btn cyan">View Details</btn></td>
-                    </tr>
-                    <tr>
-                        <td>01/01/1999</td>
-                        <td>199</td>
-                        <td>$350.00</td>
-                        <td>No<td>
-                        <td><btn class="btn cyan">View Details</btn></td>
-                        <td><a href="payment.html" class="btn green">Pay</a></td>
-                    </tr>
+		    @endforeach
+                @else
+		    <tr> <td>No reservations!</td></tr>
+		@endif
                 </tbody>
             </table>
 
