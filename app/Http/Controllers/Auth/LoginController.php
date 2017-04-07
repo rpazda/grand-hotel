@@ -55,7 +55,7 @@ class LoginController extends Controller
 
         if (Auth::attempt(['username' => $request['username'], 'password' => $request['password']])) {
             
-            return redirect()->route('/home');
+            return redirect('/home');
         }
         else {
             
@@ -73,6 +73,6 @@ class LoginController extends Controller
 
         Auth::logout();
 
-        return redirect->to('/search');
+        return redirect('/');
     }
 }
