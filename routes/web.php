@@ -20,7 +20,16 @@
 // GETs http://localhost:8000/
 Route::get('/', 'SearchController@showWelcome');
 
-Auth::routes();
+//Auth::routes();
+
+Route::get('login', 'Auth\LoginController@requestInfo');
+Route::post('login', 'Auth\LoginController@authenticate');
+Route::get('logout', 'Auth\LoginController@logout');
+
+Route::get('register', 'Auth\RegisterController@requestInfo');
+Route::post('register', 'Auth\RegisterController@register');
+
+Route::get('password.email', function(){ return view('auth.passwords.email'); });
 
 Route::get('/home', 'HomeController@index');
 

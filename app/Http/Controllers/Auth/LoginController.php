@@ -27,7 +27,7 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    //use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
-    //protected $username   = 'username';
+    protected $username   = 'username';
 
     /**
      * Create a new controller instance.
@@ -48,4 +48,31 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
+    public function authenticate(){
+
+	$request = Request::only('username','password');
+       
+
+        if (Auth::attempt(['username' => $request['username'], 'password' => $request['password']])) {
+            
+            return redirect()->route('/home');
+        }
+        else {
+            
+            return redirect()->back();
+        }
+    }
+
+
+    public function requestInfo(){
+
+	return view('auth.login');
+    }
+
+    public function logout(){
+
+        Auth::logout();
+
+        return redirect->to('/search');
+    }
 }
