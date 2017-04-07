@@ -6,4 +6,7 @@
             return View::make('login');
         }
         
+	public function username(){
+		return 'username';
+	}
     }

@@ -1,71 +1,99 @@
-<!doctype html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="{{ config('app.locale') }}">
 
 @section('sharedhead')
-	<head>
-		<title>Hotel California - @yield('title')</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <title>Hotel Californian - @yield('title')</title>
 
-		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-	</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    
+    <!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
+</head>
 
 @show
-    <body>
+<body>
 
-        <div class="container">
+    <div class="container">
+	@section('header')
+        <nav class="deep-purple">
+            <div class="nav-wrapper">
+                
+		 <a href="{{ url('search')}}" class="brand-logo">&nbsp; Hotel California</a>
+                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+                     <li><a href="{{ url('search') }}">Search</a></li>
+                     <li><a href="{{ url('friends') }}">Friends</a></li>
+                     <li><a href="{{ url('account') }}">Account</a></li>
+                     <li><a href="{{ url('reservations') }}">Reservations</a></li>
+                 </ul>
+	     </div>
+         </nav>
 
-            @section('header')
+         <div class="row" style="margin-top:10px">
+              <div class="col s12">
+                   <div class="right">
+                    
+                    <ul id="nav-mobile" class="right hide-on-mde-and-down">
+                        <!-- Authentication Links -->
+                        @if (Auth::guest())
+                            <li><a href="{{ url('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                            <li>
+                                <a href="#" class="dropdown-button btn" data-activates="dropdown1">
+                                    {{ Auth::user()->name }}
+                                </a>
 
-                <nav class="deep-purple">
-                    <div class="nav-wrapper">
-                        <a href="{{ url('search')}}" class="brand-logo">&nbsp; Hotel California</a>
-                        <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a href="{{ url('search') }}">Search</a></li>
-                            <li><a href="{{ url('friends') }}">Friends</a></li>
-                            <li><a href="{{ url('account') }}">Account</a></li>
-                            <li><a href="{{ url('reservations') }}">Reservations</a></li>
-                        </ul>
-                    </div>
-                </nav>
+                                <ul id="dropdown1" class="dropdown-content">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
 
-                <div class="row" style="margin-top:10px;">
-                    <div class="col s12">
-                        <div class="right">
-                        
-                            @if(false)
-                                [USERNAME] <a href="{{ url('logout') }}" class="btn cyan">Login</a>
-                            @else						
-                                <a href="{{ url('login') }}" class="btn cyan">Login</a>
-                            @endif
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    </ul>
+                   </div>
+              </div>
+         </div>
+        @show
+        <div class="row">
 
-                        </div>
-                    </div>
-                </div>
+	        @yield('content')
+        </div>
 
-            @show
-
-            <div class="row">
-
-                @yield('content')
-
-            </div>
-
-            <div class="row grey lighten-2">
+	 <div class="row grey lighten-2">
                 <span style="padding: 5px">
                 <center>Group 17 - 2017</center>
                 </span>
-            </div>
-            
-        </div>
+         </div>
+    </div>
 
-    </body>
-
+</body>
 </html>
 
 @if (Auth::guest())

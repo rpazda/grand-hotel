@@ -2,7 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use View;
+use Auth;
+use Request;
+use App\User;
+use App\users_table;
+use Validator;
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -27,6 +36,8 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    //protected $username   = 'username';
+
     /**
      * Create a new controller instance.
      *
@@ -36,4 +47,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
 }
