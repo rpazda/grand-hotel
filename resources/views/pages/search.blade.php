@@ -141,7 +141,11 @@
 							<li>Rate: ${{ $room->rate }}</li>
 							<li>Floor: {{ $room->floor }}</li>
 							<li>Type: {{ $room->room_type }}</li>
-							<li>Occupied: {{ $room->occupied }}</li>
+							@if($room->occupied == 0)
+							<li>Occupied: no</li>
+                                                        @else
+                                                        <li>Occupied: yes</li>
+     							@endif
 						</ul>
 					</div>
 
