@@ -31,22 +31,22 @@ Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('emailPassword', function(){ return view('auth.passwords.email'); });
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'SearchController@showWelcome');
 
 Route::get('search', 'SearchController@showWelcome');
 
-Route::get('/friends', function () {
-    return view('pages/friends');
-});
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/friends', function () {
+	    return view('pages/friends');
+	});
 
-Route::get('/account', function () {
-    return view('pages/account');
-});
+	Route::get('/account', function () {
+	    return view('pages/account');
+	});
 
-Route::get('/reservations', function () {
-    return view('pages/reservations');
-});
+	Route::get('/reservations', 'ReservationsController@showReservations');
 
-Route::get('/staff', function () {
-    return view('pages/staff');
+	Route::get('/staff', function () {
+	    return view('pages/staff');
+	});
 });
