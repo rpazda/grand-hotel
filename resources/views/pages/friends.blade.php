@@ -5,7 +5,7 @@
     <h2>Friends</h2>
 	<hr>
 
-    @if(false/*Do not show pending requests div if none exist*/)
+   
         <div class="row">
 
             <div class="col s8 offset-s2">
@@ -13,27 +13,26 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Username</th>
                         </tr>
                     </thead>
+		    
                     <tbody>
+			@foreach($pending_friends as $pending)
                         <tr>
-                            <td>Exelcius Ample</td>
+                            <td>{{ $pending->init_user }}</td>
                             <td><btn class="btn green">Accept</btn></td>
-                            <td><btn class="btn red">Decline</btn></td>
+                            <td><btn class="btn red">Decline</btn></td> 
                         </tr>
-                        <tr>
-                            <td>Exelcius Ample</td>
-                            <td><btn class="btn green">Accept</btn></td>
-                            <td><btn class="btn red">Decline</btn></td>
-                        </tr>
+			@endforeach
                     </tbody>
+		    
                 </table>
 
             </div>
 
         </div>
-    @endif
+ 
 
     <div class="row">
 
@@ -42,20 +41,23 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Username</th>
                     </tr>
                 </thead>
                 <tbody>
+		    @foreach($friends as $friend)
                     <tr>
-                        <td>Exelcius Ample</td>
+                        <td>
+			@if($user->username == $friend->init_user)
+				{{ $friend->accept_user }}
+			@else
+				{{ $friend->init_user }}
+			@endif
+			</td>
                         <td><btn class="btn cyan">View Recommendations</btn></td>
                         <td><btn class="btn red">Remove Friend</btn></td>
                     </tr>
-                    <tr>
-                        <td>Exelcius Ample</td>
-                        <td><btn class="btn cyan">View Recommendations</btn></td>
-                        <td><btn class="btn red">Remove Friend</btn></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
 
