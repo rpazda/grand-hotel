@@ -16,17 +16,22 @@
 
 				<p>
 					<input type="checkbox"  id="checkbox1" />
-					<label for="checkbox1">Choice 1</label>
+					<label for="checkbox1">1 bed</label>
 				</p>
 
 				<p>
 					<input type="checkbox" id="checkbox2" />
-					<label for="checkbox2">Choice 2</label>
+					<label for="checkbox2">2 beds</label>
 				</p>
 
 				<p>
 					<input type="checkbox" id="checkbox3" />
-					<label for="checkbox3">Choice 3</label>
+					<label for="checkbox3">3 or more beds</label>
+				</p>
+				
+				<p>
+					<input type="checkbox" id="checkbox4" />
+					<label for="checkbox3">No preference</label>
 				</p>
 
 			</form>
