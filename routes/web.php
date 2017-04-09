@@ -36,14 +36,11 @@ Route::get('/home', 'SearchController@showWelcome');
 Route::get('search', 'SearchController@showWelcome');
 
 Route::group(['middleware' => 'auth'], function(){
-	Route::get('/friends', function () {
-	    return view('pages/friends');
-	});
+	Route::get('/friends', 'FriendsController@showFriendsInfo');
 
-	Route::get('/account', function () {
-	    return view('pages/account');
-	});
+	Route::get('/account', 'AccountController@showAccountInfo');
 
+	Route::post('/account', 'AccountController@modifyAccountInfo');
 	Route::get('/reservations', 'ReservationsController@showReservations');
 
 	Route::get('/staff', function () {
