@@ -36,6 +36,8 @@
 
 			</form>
 
+			
+
 			<h5>Fridge</h5>
 
 			<form action="#">
@@ -130,45 +132,65 @@
 			-->
 			<!-- new content here! The foreach loop iterates through an array of Room objects.
 			     Note that each object is essentially a record from the rooms entity in the database -->
-			@foreach($rooms as $room)
-				<div class="row">
-					<div class="col s12">
+			<div id="rooms">
+				
+				<input class="search" placeholder="search" />
+				
+				<ul class="list">
 
-					<div class="col s3 grey" style="height:200px;">
-						image
-					</div>
+					@foreach($rooms as $room)
+						<li>
+	
+							<div class="row">
+								<div class="col s12">
 
-					<div class="col s5">
-							<!-- this call in double braces extracts the value from this record under the 'room_id' column -->
-						<h5>Room {{ $room->room_id }}</h5>
+									<div class="col s3 grey" style="height:200px;">
+										image
+									</div>
 
-						<ul>
-							<li>Rate: ${{ $room->rate }}</li>
-							<li>Floor: {{ $room->floor }}</li>
-							<li>Type: {{ $room->room_type }}</li>
-							@if($room->occupied == 0)
-							<li>Occupied: no</li>
-                                                        @else
-                                                        <li>Occupied: yes</li>
-     							@endif
-						</ul>
-					</div>
+									<div class="col s5">
+												<!-- this call in double braces extracts the value from this record under the 'room_id' column -->
+											<h5>Room <span class="room-id">{{ $room->room_id }}</span></h5>
 
-					<div class="col s4">
-						
-						<a href="#" class="btn cyan" style="margin-top: 10px">
-							Room Details    
-						</a>
+											<ul>
+												<li>Rate: <span class="rate">${{ $room->rate }}</span></li>
+												<li>Floor: <span class="floor">{{ $room->floor }}</span></li>
+												<li>Type: <span class="room-type">{{ $room->room_type }}</span></li>
+												@if($room->occupied == 0)
+												<li>Occupied: <span class="occupied">no</span></li>
+													@else
+													<li>Occupied: <span class="occupied">yes</span></li>
+													@endif
+											</ul>
+									</div>
 
-						<a href="#" class="btn cyan" style="margin-top: 10px">
-							Book Room   
-						</a>
+									<div class="col s4">
+										
+										<a href="#" class="btn cyan" style="margin-top: 10px">
+											Room Details    
+										</a>
 
-					</div>
+										<a href="#" class="btn cyan" style="margin-top: 10px">
+											Book Room   
+										</a>
 
-				</div>
-				</div>
-			@endforeach
+									</div>
+
+								</div>
+							</div>
+						</li>
+					@endforeach
+
+				</ul>
+			</div>
+
+			<script>
+				var options = {
+					valueNames: ['room-id','rate', 'floor', 'room-type', 'occupied']
+				};
+				var roomList= new List('rooms', options);
+			</script>
+
 			<div class="row" id="room3"></div>
 			
 
