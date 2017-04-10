@@ -23,6 +23,9 @@
     <!--ListJS-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -87,6 +90,7 @@
         <div class="row">
 
 	        @yield('content')
+            
         </div>
 
 	 <div class="row grey lighten-2">
