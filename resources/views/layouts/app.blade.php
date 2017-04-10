@@ -20,6 +20,9 @@
     <!-- Compiled and minified JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     
+    <!--ListJS-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
