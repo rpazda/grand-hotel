@@ -132,6 +132,11 @@
 			-->
 			<!-- new content here! The foreach loop iterates through an array of Room objects.
 			     Note that each object is essentially a record from the rooms entity in the database -->
+			<p>
+				Desired Reservation Date:
+				<input type="date" class="datepicker">
+			</p>
+
 			<div id="rooms">
 				
 				<input class="search" placeholder="search" />
