@@ -30,5 +30,20 @@ class SearchController extends Controller
 
 	// creates the view and ties the data to it under the name 'rooms'
         return View::make('pages.search')->with('rooms', $rooms); 
-    }	  
+     }
+
+      public function showRoomInformation(int $room_id, string $room_type)	{
+      
+      	// argument passed from a post route ./{room-num}/{room-type}             
+	$room = Room::find($room_id);
+        $type_info = Room_Type::find($room_type);
+
+	
+      }
+
+     public bookRoom(int $room_id, string $date){
+
+     	$user = Auth::user();
+	// create a new reservation	
+     }     
 }
