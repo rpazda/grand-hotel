@@ -13,8 +13,7 @@ class SearchController extends Controller
 {
      public function showWelcome()
     {
-	// select * from rooms;
-	$rooms = Room::all();
+	$rooms = Room::where(['occupied' => 0])->get();
         
 	// Other queries
 	// select * from rooms where occupied = 0;

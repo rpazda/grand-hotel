@@ -15,23 +15,23 @@
 			<form action="#">
 
 				<p>
-					<input type="checkbox"  id="checkbox1" />
-					<label for="checkbox1">1 bed</label>
+					<input type="radio" name="size-radio-search"  id="one-bed" />
+					<label for="one-bed">1 bed</label>
 				</p>
 
 				<p>
-					<input type="checkbox" id="checkbox2" />
-					<label for="checkbox2">2 beds</label>
+					<input type="radio" name="size-radio-search" id="two-beds" />
+					<label for="two-beds">2 beds</label>
 				</p>
 
 				<p>
-					<input type="checkbox" id="checkbox3" />
-					<label for="checkbox3">3 or more beds</label>
+					<input type="radio" name="size-radio-search" id="three-beds-plus" />
+					<label for="three-beds-plus">3 or more beds</label>
 				</p>
 				
 				<p>
-					<input type="checkbox" id="checkbox4" />
-					<label for="checkbox3">No preference</label>
+					<input type="radio" name="size-radio-search" id="no-preference" />
+					<label for="no-preference">No preference</label>
 				</p>
 
 			</form>
