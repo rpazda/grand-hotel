@@ -30,5 +30,11 @@ class SearchController extends Controller
 
 	// creates the view and ties the data to it under the name 'rooms'
         return View::make('pages.search')->with('rooms', $rooms); 
-    }	  
+     }
+
+    public function showRoomInfo(string $room_id){
+    
+    	$room = Room::find((int)$room_id);
+	return View::make('pages.room_details')->with('room', $room);	
+    }     
 }

@@ -103,7 +103,7 @@
 
 									<div class="col s3">
 										
-										<a href="#" class="btn cyan" style="margin-top: 10px">
+										<a href="{{ url('search/'.$room->room_id ) }}" class="btn cyan" style="margin-top: 10px">
 											Room Details    
 										</a>
 
