@@ -25,7 +25,6 @@ Route::get('/', 'SearchController@showWelcome');
 Route::get('login', 'Auth\LoginController@requestInfo');
 Route::post('login', 'Auth\LoginController@authenticate');
 Route::post('logout', 'Auth\LoginController@logout');
-
 Route::get('register', 'Auth\RegisterController@requestInfo');
 Route::post('register', 'Auth\RegisterController@register');
 
@@ -36,7 +35,8 @@ Route::get('emailPassword', function(){ return view('auth.passwords.email'); });
 Route::get('/home', 'SearchController@showWelcome');
 
 Route::get('search', 'SearchController@showWelcome');
-
+Route::get('search/{room_id}', 'SearchController@showRoomInfo');
+	
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends', 'FriendsController@showFriendsInfo');
 
