@@ -107,7 +107,7 @@
 											Room Details    
 										</a>
        
-										<a href="#" class="btn cyan" style="margin-top: 10px">
+										<a href="{{ url('reservations/reserve/room='.$room->room_id.'&date='.$sel_date) }}" class="btn cyan" style="margin-top: 10px">
 											Book Room   
 										</a>
 

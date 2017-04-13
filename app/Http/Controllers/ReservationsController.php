@@ -8,7 +8,7 @@ use App\Room;
 use App\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DateTime;
+use Carbon\Carbon;
 
 class ReservationsController extends Controller
 {
@@ -25,23 +25,29 @@ class ReservationsController extends Controller
 		return view('pages.reservations')->with('reservation_data', $reservation_data);
 	}
 
-	public function reserveRoom(string $username, string $room_id, string $date){
+	public function reserveRoom(string $room_id, string $date){
+
+		// generate a random number that is not an id in the reservations table
+		$res_id = mt_rand(0, 100000);
+		while (Reservation::find($res_id) != null){
+
+			$res_id = mt_rand(0, 100000); 
+		}
 
 		// send all the data needed to make a reservation except for an id and today's date
 		// username, reservation start, paid (false), and room id
-		// 'reservation/{username}?start={start}&paid={paid}&room={room}'
 		$new_reservation = Reservation::create([
 					'id'                   => $res_id,
-					'username'             => $username,
+					'username'             => Auth::user()->username,
 					'reservationStartDate' => $date,
 					'paid'                 => 0,
-					'dateReserved'         => new DateTime(),
+					'dateReserved'         => Carbon::now(),
 					'room'                 => $room_id
 				]);
 
 		$new_reservation->save();
 		
-		$reservation_data = Reservation::where('username', $username)->get();
+		$reservation_data = Reservation::where('username', Auth::user()->username)->get();
 		
 		return View::make('pages.reservations')->with('reservation_data', $reservation_data);
 	}
