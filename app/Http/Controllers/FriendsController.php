@@ -46,16 +46,26 @@ class FriendsController extends Controller
     		//not sure how to get the username of the specific user request from the page
 		$rejected = Friend::where(['init_user' => $loser , 'accept_user' => $user->username])
 			->orWhere(['init_user' => $user->username, 'accept_user' => $loser])
-			->first()
-			->delete();
+			->first();
+
+		if($rejected != null){
+			
+			$rejected->delete();
+		}
+
 		return $this->showFriendsInfo();
 	}
 
 	public function confirmFriend(string $friend){
 		$user = Auth::user();
 		//not sure how to get the username of the specific user request from the page
-		$accepted = Friend::where(['accepted' => 0, 'init_user' => $friend , 'accept_user' => $user->username])->first()->update(['accepted' => 1]);
-    
+		$accepted = Friend::where(['accepted' => 0, 'init_user' => $friend , 'accept_user' => $user->username])->first();
+		
+		if($accepted != null){
+			
+			$accepted->update(['accepted' => 1]);
+		}
+
         	return $this->showFriendsInfo();
 	}
 
@@ -63,7 +73,12 @@ class FriendsController extends Controller
 
 		$user = Auth::user();
 		//not sure how to get the username of the specific user request from the page
-		$rejected = Friend::where(['accepted' => 0, 'init_user' => $loser , 'accept_user' => $user->username])->first()->delete();
+		$rejected = Friend::where(['accepted' => 0, 'init_user' => $loser , 'accept_user' => $user->username])->first();
+		
+		if($rejected != null){
+			
+			$rejected->delete();
+		}
 
 		return $this->showFriendsInfo();
     }
