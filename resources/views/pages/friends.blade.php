@@ -21,8 +21,8 @@
 			@foreach($pending_friends as $pending)
                         <tr>
                             <td>{{ $pending->init_user }}</td>
-                            <td><btn class="btn green">Accept</btn></td>
-                            <td><btn class="btn red">Decline</btn></td> 
+                            <td><btn class="btn green"><a href="{{ url('/friends/confirm/'.$pending->init_user) }}">Accept</a></btn></td>
+                            <td><btn class="btn red"><a href="{{ url('/friends/reject/'.$pending->init_user) }}">Decline</a></btn></td> 
                         </tr>
 			@endforeach
                     </tbody>

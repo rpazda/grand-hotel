@@ -10,20 +10,22 @@ use Illuminate\Support\Facades\Auth;
 
 class FriendsController extends Controller
 {
-    public function showFriendsInfo(){
+	
+	public function showFriendsInfo(){
 
-	$user    = Auth::user();
-	$friends = Friend::where(['accepted'  => 1, 'accept_user' => $user->username])
+		$user    = Auth::user();
+		
+		$friends = Friend::where(['accepted'  => 1, 'accept_user' => $user->username])
 			->orWhere(['accepted' => 1, 'init_user'   => $user->username])
 			->get();
 
-	$pending_friends = Friend::where(['accepted' => 0, 'accept_user' => $user->username])
-				->get();
+		$pending_friends = Friend::where(['accepted' => 0, 'accept_user' => $user->username])
+			->get();
 
-	return View::make('pages.friends')->with('friends', $friends)
-				          ->with('pending_friends', $pending_friends)
-					  ->with('user', $user);
-    }
+		return View::make('pages.friends')->with('friends', $friends)
+		        ->with('pending_friends', $pending_friends)
+			->with('user', $user);
+	}
 
 	public function searchUsers(string $searchString){
 
@@ -31,37 +33,37 @@ class FriendsController extends Controller
 		$searchStringLower = strtolower($searchString);	//set lowercase to standardize
 
 		//look for matching first or last name
-		$matchingUsers = User::where(['firstName' => strtolower($searchStringLower)])
-								->orWhere(['lastName' => strtolower($searchStringLower)])
-								->get();
+		$matchingUsers = User::where(['firstName' => $searchStringLower])
+				->orWhere(['lastName' => $searchStringLower])
+				->get();
 
 		return $matchingUsers;
 	}
 
-    public function removeFriend(Request $remove_request){
+	public function removeFriend(string $loser){
 
 		$user = Auth::user();
-		//not sure how to get the username of the specific user request from the page
-		$rejected = Friend::where(['accepted' => 1, 'init_user' => $remove_request->deleteFriend->username , 'accept_user' => $user->username])
-							->orWhere(['accepted' => 1, 'init_user' => $user->username, 'accept_user' =>  $remove_request->deleteFriend->username ])
-							->delete();
-
+    		//not sure how to get the username of the specific user request from the page
+		$rejected = Friend::where(['init_user' => $loser , 'accept_user' => $user->username])
+			->orWhere(['init_user' => $user->username, 'accept_user' => $loser])
+			->first()
+			->delete();
 		return $this->showFriendsInfo();
-    }
+	}
 
-    public function confirmFriend(Request $confirm_request){
+	public function confirmFriend(string $friend){
 		$user = Auth::user();
 		//not sure how to get the username of the specific user request from the page
-		$accepted = Friend::where(['accepted' => 0, 'init_user' => $confirm_request->username , 'accept_user' => $user->username])->update(['accepted' => 1]);
+		$accepted = Friend::where(['accepted' => 0, 'init_user' => $friend , 'accept_user' => $user->username])->first()->update(['accepted' => 1]);
+    
+        	return $this->showFriendsInfo();
+	}
 
-        return $this->showFriendsInfo();
-    }
-
-	public function rejectFriend(Request $remove_request){
+	public function rejectFriend(string $loser){
 
 		$user = Auth::user();
 		//not sure how to get the username of the specific user request from the page
-		$rejected = Friend::where(['accepted' => 0, 'init_user' => $confirm_request->username , 'accept_user' => $user->username])->delete();
+		$rejected = Friend::where(['accepted' => 0, 'init_user' => $loser , 'accept_user' => $user->username])->first()->delete();
 
 		return $this->showFriendsInfo();
     }

@@ -43,8 +43,10 @@ Route::get('search/{room_id}', 'SearchController@showRoomInfo');
 	
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends', 'FriendsController@showFriendsInfo');
-	Route::post('/friends', 'FriendsController@removeFriend');
-
+	Route::get('/friends/remove/{loser}', 'FriendsController@removeFriend');
+	Route::get('/friends/reject/{loser}', 'FriendsController@rejectFriend');
+	Route::get('/friends/confirm/{friend}', 'FriendsController@confirmFriend');
+	
 	Route::get('/account', 'AccountController@showAccountInfo');
 	Route::post('/account', 'AccountController@modifyAccountInfo');
 
