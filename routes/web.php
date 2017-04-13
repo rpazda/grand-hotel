@@ -41,9 +41,13 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends', 'FriendsController@showFriendsInfo');
 
 	Route::get('/account', 'AccountController@showAccountInfo');
-
 	Route::post('/account', 'AccountController@modifyAccountInfo');
+	
 	Route::get('/reservations', 'ReservationsController@showReservations');
+	
+	Route::get('reservations/{username}/room={room_id}&date={select_date}', 
+		'ReservationsController@reserveRoom');
+
 
 	Route::get('/staff', function () {
 	    return view('pages/staff');

@@ -1,8 +1,8 @@
-@extends('layouts.app')
+ervatiextends('layouts.app')
 
 @section('content')
     
-    <h2>Reservations</h2>
+    <h3>Reservations</h3>
 	<hr>
 
     <div class="row">
@@ -12,7 +12,6 @@
                     <tr>
                         <th>Date</th>
                         <th>Room</th>
-                        <th>Total</th>
                         <th>Paid</th>
                     </tr>
                 </thead>
@@ -20,9 +19,8 @@
                 @if($reservation_data)
                     @foreach($reservation_data as $reservation)
 		    <tr>
-                        <td>{{ $reservation->reservationDate }}</td>
+                        <td>{{ $reservation->reservationStartDate }}</td>
                         <td>{{ $reservation->room }}</td>
-                        <td>$350.00</td>
                         <td>
 			@if($reservation->paid == 1)
 				yes

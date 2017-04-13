@@ -106,7 +106,7 @@
 										<a href="{{ url('search/'.$room->room_id ) }}" class="btn cyan" style="margin-top: 10px">
 											Room Details    
 										</a>
-
+       
 										<a href="#" class="btn cyan" style="margin-top: 10px">
 											Book Room   
 										</a>
