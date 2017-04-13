@@ -33,20 +33,21 @@ class ReservationsController extends Controller
 
 			$res_id = mt_rand(0, 100000); 
 		}
-
+		
 		// send all the data needed to make a reservation except for an id and today's date
 		// username, reservation start, paid (false), and room id
-		$new_reservation = Reservation::create([
+		if(!Reservation::where('reservationStartDate', substr($date, 0, 10))->where('room',$room_id)->exists()){
+			$new_reservation = Reservation::create([
 					'id'                   => $res_id,
 					'username'             => Auth::user()->username,
-					'reservationStartDate' => $date,
+					'reservationStartDate' => substr($date, 0, 10),
 					'paid'                 => 0,
 					'dateReserved'         => Carbon::now(),
 					'room'                 => $room_id
 				]);
 
-		$new_reservation->save();
-		
+			$new_reservation->save();
+		}
 		$reservation_data = Reservation::where('username', Auth::user()->username)->get();
 		
 		return View::make('pages.reservations')->with('reservation_data', $reservation_data);
