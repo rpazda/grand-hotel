@@ -8,5 +8,5 @@ class Room extends Model
 {
 	protected $primaryKey = 'room_id';
 
-	public $timestamp = false;
+	public $timestamps = false;
 }
