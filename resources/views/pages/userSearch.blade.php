@@ -39,7 +39,7 @@
     <div class="row">
 	
 	<div class="col s8 offset-s2">
-		<p>Looks like there were no matches. <a href="#" onclick="window.history.back()"> Go back</a>.</p>	
+		<p>Looks like there were no matches. <a href="{{ $url = url('/friends') }}"> Go back</a>.</p>	
 	</div>
     </div>
 

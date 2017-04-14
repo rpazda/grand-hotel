@@ -32,9 +32,15 @@ class FriendsController extends Controller
              // create a new record in the friends table where friend is the 
 	     // username of 'accept_user'
 		$user = Auth::user();
-
+                
+		$rand_id = mt_rand(0, 100000);
+		while(Friend::where('id', '=', $rand_id)->exists()){
+		
+			$rand_id = mt_rand(0, 100000);
+		}
 		$friend_request = new Friend();
-
+		
+		$friend_request->id          = $rand_id;
 		$friend_request->accept_user = $friend;
 		$friend_request->init_user   = $user->username;
 		$friend_request->accepted    = 0;
@@ -42,6 +48,8 @@ class FriendsController extends Controller
 		if(!Friend::where(['init_user' => $user->username, 'accept_user' => $friend])->exists()){
 			$friend_request->save();
 		}
+
+		return $this->showFriendsInfo();
 	}
 
 	public function searchUsers(string $searchString){
