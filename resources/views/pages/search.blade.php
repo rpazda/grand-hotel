@@ -93,21 +93,21 @@
 											<li>Rate: <span class="rate">${{ $room->rate }}</span></li>
 											<li>Floor: <span class="floor">{{ $room->floor }}</span></li>
 											<li>Type: <span class="room-type">{{ $room->room_type }}</span></li>
-											@if($room->occupied == 0)
+											<!-- @if($room->occupied == 0)
 											<li>Occupied: <span class="occupied">no</span></li>
 												@else
 												<li>Occupied: <span class="occupied">yes</span></li>
-												@endif
+												@endif -->
 										</ul>
 									</div>
 
 									<div class="col s3">
 										
-										<a href="#" class="btn cyan" style="margin-top: 10px">
+										<a href="{{ url('search/'.$room->room_id ) }}" class="btn cyan" style="margin-top: 10px">
 											Room Details    
 										</a>
-
-										<a href="#" class="btn cyan" style="margin-top: 10px">
+       
+										<a href="{{ url('reservations/reserve/room='.$room->room_id.'&date='.$sel_date) }}" class="btn cyan" style="margin-top: 10px">
 											Book Room   
 										</a>
 
@@ -128,7 +128,7 @@
 		</div>
 
 	</div>
-
+<!--
 	<div id="room-info-modal" class="modal">
 		<div class="modal-content">
 			
@@ -203,7 +203,7 @@
 			<a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>
 		</div>
 	</div>
-
+-->
 	<script>	
 		var options = {
 			valueNames: ['room-id','rate', 'floor', 'room-type', 'occupied']

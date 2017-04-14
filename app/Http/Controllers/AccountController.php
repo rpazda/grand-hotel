@@ -41,6 +41,8 @@ class AccountController extends Controller{
 		// 
 		
 		$user->save();
+
+		return View::make('pages.account')->with('user', $user);
 	}
         
 }

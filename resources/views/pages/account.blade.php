@@ -6,7 +6,7 @@
 	<hr>
      <!-- needs to be a form posting to url('account') -->
      <div class="col s8 offset-s2">
-        <form class="" role="form" method="POST" action="{{ url('updateAccount')}}">
+        <form class="" role="form" method="POST" action="{{ action('AccountController@modifyAccountInfo')}}">
             
             {{ csrf_field() }}
             
