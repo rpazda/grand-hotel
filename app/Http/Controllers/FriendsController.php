@@ -26,18 +26,37 @@ class FriendsController extends Controller
 		        ->with('pending_friends', $pending_friends)
 			->with('user', $user);
 	}
+        
+	public function addFriend(string $friend){
+	
+             // create a new record in the friends table where friend is the 
+	     // username of 'accept_user'
+		$user = Auth::user();
+
+		$friend_request = new Friend();
+
+		$friend_request->accept_user = $friend;
+		$friend_request->init_user   = $user->username;
+		$friend_request->accepted    = 0;
+
+		if(!Friend::where(['init_user' => $user->username, 'accept_user' => $friend])->exists()){
+			$friend_request->save();
+		}
+	}
 
 	public function searchUsers(string $searchString){
 
 
 		$searchStringLower = strtolower($searchString);	//set lowercase to standardize
 
-		//look for matching first or last name
-		$matchingUsers = User::where(['firstName' => $searchStringLower])
-				->orWhere(['lastName' => $searchStringLower])
-				->get();
 
-		return $matchingUsers;
+		$matchingUsers = User::distinct()
+			->where('firstName', 'like', $searchStringLower)
+			->orWhere('lastName', 'like', $searchStringLower)
+			->orWhere('username', '=', $searchStringLower)
+			->get();
+
+		return View::make('astounding')->with($matchingUsers);
 	}
 
 	public function removeFriend(string $loser){

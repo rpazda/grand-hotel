@@ -46,7 +46,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends/remove/{loser}', 'FriendsController@removeFriend');
 	Route::get('/friends/reject/{loser}', 'FriendsController@rejectFriend');
 	Route::get('/friends/confirm/{friend}', 'FriendsController@confirmFriend');
-	
+	Route::get('/friends/add/{friend}', 'FriendsController@addFriend');
+	Route::get('/friends/query/{user}', 'FriendsController@searchUsers');	
+
 	Route::get('/account', 'AccountController@showAccountInfo');
 	Route::post('/account', 'AccountController@modifyAccountInfo');
 
