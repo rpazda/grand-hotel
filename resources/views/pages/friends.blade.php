@@ -104,23 +104,37 @@
 
     <script>
 
-    $('.modal').modal(function(){
-	$(this).on("click", "#clear-search-button", function(){ console.log("SHOOTAN");});
+    //$('.modal').modal();
+    $('.modal').modal({ 
+    	dismissible: true, 
+	ready: function(modal, trigger){
+		$('.modal').on("click", "#clear-search-button", function(){
+			console.log("Clear search button clicked");
+			$('#search-name').val('');
+		});
+
+		$('.modal').on("click", "#perform-search-button", function(e){
+
+			e.preventDefault();
+			console.log("Perform search button clicked");
+			var user = $('#search-name').val();
+			console.log('username: ' + user);
+			window.location.href = 'http://localhost:8000/search/query/' + user;
+		});
+	 }
     });
-    $(document).on("click", "#clear-search-button", function(){
-    	console.log("SHATAN");
-    });
-    $('#clear-search-button').click( function(){
+    /*$('#clear-search-button').click( function(){
 		console.log("I am SATAN");	
 		$('#search-name').val('');
     });
-		
-    $('#perform-search-button').click( function(){
-		console.log('I am GOD');
-		var user = $('#search-name').val();
-        	window.location.replace('http://localhost:8000/search/query/' + user);	
+    		
+    $('#perform-search-button').click( function(e){
+	    console.log('I am GOD');
+	    e.preventDefault();
+		//var user = $('#search-name').val();
+        	window.location.replace('http://localhost:8000');	
     });
-
+     */ 
 
     </script>
 
