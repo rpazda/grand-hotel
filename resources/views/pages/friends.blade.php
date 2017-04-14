@@ -119,7 +119,7 @@
 			console.log("Perform search button clicked");
 			var user = $('#search-name').val();
 			console.log('username: ' + user);
-			window.location.href = 'http://localhost:8000/search/query/' + user;
+			window.location.href = 'http://localhost:8000/friends/query/' + user;
 		});
 	 }
     });

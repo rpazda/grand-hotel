@@ -56,7 +56,7 @@ class FriendsController extends Controller
 			->orWhere('username', '=', $searchStringLower)
 			->get();
 
-		return View::make('astounding')->with($matchingUsers);
+		return View::make('pages.userSearch')->with('matching_users', $matchingUsers);
 	}
 
 	public function removeFriend(string $loser){
