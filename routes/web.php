@@ -22,31 +22,40 @@ Route::get('/', 'SearchController@showWelcome');
 
 //Auth::routes();
 
+Route::get('/home', 'SearchController@showWelcome');
+
 Route::get('login', 'Auth\LoginController@requestInfo');
 Route::post('login', 'Auth\LoginController@authenticate');
+
 Route::post('logout', 'Auth\LoginController@logout');
 
 Route::get('register', 'Auth\RegisterController@requestInfo');
 Route::post('register', 'Auth\RegisterController@register');
 
-Route::get('password.email', function(){ return view('auth.passwords.email'); });
+Route::post('updateAccount', 'AccountController@modifyAccountInfo');
 
-Route::get('/home', 'HomeController@index');
+Route::get('emailPassword', function(){ return view('auth.passwords.email'); });
+
+Route::get('getUsers', 'FriendsController@SearchUsers');
 
 Route::get('search', 'SearchController@showWelcome');
+Route::get('search/{room_id}', 'SearchController@showRoomInfo');
+	
+Route::group(['middleware' => 'auth'], function(){
+	Route::get('/friends', 'FriendsController@showFriendsInfo');
+	Route::get('/friends/remove/{loser}', 'FriendsController@removeFriend');
+	Route::get('/friends/reject/{loser}', 'FriendsController@rejectFriend');
+	Route::get('/friends/confirm/{friend}', 'FriendsController@confirmFriend');
+	Route::get('/friends/add/{friend}', 'FriendsController@addFriend');
+	Route::get('/friends/query/{user}', 'FriendsController@searchUsers');	
 
-Route::get('/friends', function () {
-    return view('pages/friends');
-});
+	Route::get('/account', 'AccountController@showAccountInfo');
+	Route::post('/account', 'AccountController@modifyAccountInfo');
 
-Route::get('/account', function () {
-    return view('pages/account');
-});
-
-Route::get('/reservations', function () {
-    return view('pages/reservations');
-});
-
-Route::get('/staff', function () {
-    return view('pages/staff');
+	Route::get('reservations/reserve/room={roomm_id}&date={date}', 'ReservationsController@reserveRoom');
+	Route::get('/reservations', 'ReservationsController@showReservations');
+	
+	Route::get('/staff', function () {
+	    return view('pages/staff');
+	});
 });

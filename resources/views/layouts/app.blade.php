@@ -10,16 +10,24 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Hotel Californian - @yield('title')</title>
+    <title>Hotel California - @yield('title')</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <!-- Compiled and minified CSS -->
+    <script src="{{ public_path('js/app.js')}}"></script>
+
+    <!-- Materialize, Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
+    <!-- Materialize, Compiled and minified JavaScript -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
     
+    <!--ListJS-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+
+    <!--Material Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -84,6 +92,7 @@
         <div class="row">
 
 	        @yield('content')
+            
         </div>
 
 	 <div class="row grey lighten-2">

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col m8 offset-m2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
@@ -11,9 +11,9 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('firstName') ? ' has-error' : '' }}">
-                            <label for="firstName" class="col-md-4 control-label">First Name</label>
+                            <label for="firstName" class="control-label">First Name</label>
 
-                            <div class="col-md-6">
+                            <div class="">
                                 <input id="firstName" type="text" class="form-control" name="firstName" value="{{ old('firstName') }}" required autofocus>
 
                                 @if ($errors->has('firstName'))
@@ -24,10 +24,10 @@
                             </div>
                         </div>
                         
-			<div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
-                            <label for="lastName" class="col-md-4 control-label">Last Name</label>
+			            <div class="form-group{{ $errors->has('lastName') ? ' has-error' : '' }}">
+                            <label for="lastName" class="control-label">Last Name</label>
 
-                            <div class="col-md-6">
+                            <div class="">
                                 <input id="lastName" type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" required autofocus>
 
                                 @if ($errors->has('lastName'))
