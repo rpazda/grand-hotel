@@ -21,8 +21,8 @@
 			@foreach($pending_friends as $pending)
                         <tr>
                             <td>{{ $pending->init_user }}</td>
-                            <td><btn class="btn green">Accept</btn></td>
-                            <td><btn class="btn red">Decline</btn></td> 
+                            <td><btn class="btn green"><a href="{{ url('/friends/confirm/'.$pending->init_user) }}">Accept</a></btn></td>
+                            <td><btn class="btn red"><a href="{{ url('/friends/reject/'.$pending->init_user) }}">Decline</a></btn></td> 
                         </tr>
 			@endforeach
                     </tbody>
@@ -92,7 +92,7 @@
 
                 </div>
                 <button id="clear-search-button" class="btn red">Clear</button>
-                <button id="perform-search-button" class="btn ">Search</button>
+                <button id="perform-search-button" class="btn red">Search</button>
 
             </form>
 
@@ -103,11 +103,38 @@
     </div>
 
     <script>
-        $('.modal').modal();
 
-        $('#clear-search-button').click( function(){
+    //$('.modal').modal();
+    $('.modal').modal({ 
+    	dismissible: true, 
+	ready: function(modal, trigger){
+		$('.modal').on("click", "#clear-search-button", function(){
+			console.log("Clear search button clicked");
 			$('#search-name').val('');
 		});
+
+		$('.modal').on("click", "#perform-search-button", function(e){
+
+			e.preventDefault();
+			console.log("Perform search button clicked");
+			var user = $('#search-name').val();
+			console.log('username: ' + user);
+			window.location.href = 'http://localhost:8000/friends/query/' + user;
+		});
+	 }
+    });
+    /*$('#clear-search-button').click( function(){
+		console.log("I am SATAN");	
+		$('#search-name').val('');
+    });
+    		
+    $('#perform-search-button').click( function(e){
+	    console.log('I am GOD');
+	    e.preventDefault();
+		//var user = $('#search-name').val();
+        	window.location.replace('http://localhost:8000');	
+    });
+     */ 
 
     </script>
 
