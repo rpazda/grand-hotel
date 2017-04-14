@@ -92,7 +92,7 @@
 
                 </div>
                 <button id="clear-search-button" class="btn red">Clear</button>
-                <button id="perform-search-button" class="btn ">Search</button>
+                <button id="perform-search-button" class="btn red">Search</button>
 
             </form>
 
@@ -103,11 +103,24 @@
     </div>
 
     <script>
-        $('.modal').modal();
 
-        $('#clear-search-button').click( function(){
-			$('#search-name').val('');
-		});
+    $('.modal').modal(function(){
+	$(this).on("click", "#clear-search-button", function(){ console.log("SHOOTAN");});
+    });
+    $(document).on("click", "#clear-search-button", function(){
+    	console.log("SHATAN");
+    });
+    $('#clear-search-button').click( function(){
+		console.log("I am SATAN");	
+		$('#search-name').val('');
+    });
+		
+    $('#perform-search-button').click( function(){
+		console.log('I am GOD');
+		var user = $('#search-name').val();
+        	window.location.replace('http://localhost:8000/search/query/' + user);	
+    });
+
 
     </script>
 
