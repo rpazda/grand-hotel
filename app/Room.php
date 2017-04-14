@@ -9,4 +9,6 @@ class Room extends Model
 	protected $primaryKey = 'room_id';
 
 	public $timestamps = false;
+	
 }
+
