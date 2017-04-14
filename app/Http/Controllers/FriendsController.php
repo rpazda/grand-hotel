@@ -45,7 +45,8 @@ class FriendsController extends Controller
 		$friend_request->init_user   = $user->username;
 		$friend_request->accepted    = 0;
 
-		if(!Friend::where(['init_user' => $user->username, 'accept_user' => $friend])->exists()){
+		if(!Friend::where(['init_user' => $user->username, 'accept_user' => $friend])
+			  ->orWhere(['init_user' => $friend, 'accept_user' => $user->username])->exists()){
 			$friend_request->save();
 		}
 
@@ -57,7 +58,7 @@ class FriendsController extends Controller
 
 		$searchStringLower = strtolower($searchString);	//set lowercase to standardize
 
-
+                // do not match the user's friends
 		$matchingUsers = User::distinct()
 			->where('firstName', 'like', $searchStringLower)
 			->orWhere('lastName', 'like', $searchStringLower)
