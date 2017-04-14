@@ -103,7 +103,7 @@
 
 									<div class="col s3">
 										
-										<a href="{{ url('search/'.$room->room_id ) }}" class="btn cyan" style="margin-top: 10px">
+										<a href="{{ url('search/room/'.$room->room_id ) }}" class="btn cyan" style="margin-top: 10px">
 											Room Details    
 										</a>
        
@@ -212,12 +212,21 @@
 
 		$('.datepicker').pickadate({
 			selectMonths: true, // Creates a dropdown to control month
-			selectYears: 15 // Creates a dropdown of 15 years to control year
+			selectYears : 15, // Creates a dropdown of 15 years to control year
 		});
 		$('#reserve-date').change( function(){
-			//$('reserve-date').val(); to get date as DD MONTH, YYYY
+			//$('#reserve-date').val(); to get date as DD MONTH, YYYY
 			//Call controller to return view with refined to new date and not reserved
 			//Need a new route that takes date param that will be passed here
+			var udate = $('#reserve-date').val().split(/\s|,\s/);
+			var year = udate[2];
+			var months = { January: "01", February: "02", March: "03", April: "04", May: "05", June: "06",
+				July: "07", August: "08", September: "09", October: "10", November: "11", December: "12"};
+			var month = months[udate[1]];
+			var day = udate[0];
+
+			var fdate = year + '-' + month + '-' + day;
+			window.location.replace("http://localhost:8000/search/date/" + fdate);
 		});
 		$('.modal').modal();
 

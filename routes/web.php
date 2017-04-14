@@ -39,8 +39,9 @@ Route::get('emailPassword', function(){ return view('auth.passwords.email'); });
 Route::get('getUsers', 'FriendsController@SearchUsers');
 
 Route::get('search', 'SearchController@showWelcome');
-Route::get('search/{room_id}', 'SearchController@showRoomInfo');
-	
+Route::get('search/room/{room_id}', 'SearchController@showRoomInfo');
+Route::get('search/date/{date}', 'SearchController@showRoomsAvailable');
+
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends', 'FriendsController@showFriendsInfo');
 	Route::post('/friends', 'FriendsController@removeFriend');
