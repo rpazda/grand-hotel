@@ -6,5 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recommendation extends Model
 {
-	public $timestamp = false;
+	protected $fillable = ['id', 'dateReserved', 'room', 'user'];
+	public $timestamps = false;
 }
