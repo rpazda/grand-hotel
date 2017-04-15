@@ -6,6 +6,7 @@ use View; // required so that we can make a view
 use App\Room; // uses the Room model. rooms db table can now be queried
 use App\User; // uses the User model
 use App\Reservation;
+use App\Recommendation;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
@@ -36,5 +37,7 @@ class SearchController extends Controller
     
      	$room = Room::find((int)$room_id);
 	return View::make('pages.room_details')->with('room', $room);	
-     }     
+     }
+
+          
 }

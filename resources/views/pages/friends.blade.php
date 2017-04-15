@@ -61,7 +61,7 @@
                                 {{ $friend->init_user }}
                             @endif
 			            </td>
-                        <td><a href="" class="btn cyan">View Recommendations</a></td>
+                        <td><a href="{{ $url = url('/friends/recommends/'.$deleteFriend) }}" class="btn cyan">View Recommendations</a></td>
                         <td><a href="{{action('FriendsController@removeFriend', ['deleteFriend' => $deleteFriend])}}" class="btn red">Remove Friend</a></td>
                     </tr>
                     @endforeach

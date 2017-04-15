@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use View;
+use App\Recommendation;
 use App\User;
 use App\Friend;
 use Illuminate\Support\Facades\Auth;
@@ -109,5 +110,16 @@ class FriendsController extends Controller
 		}
 
 		return $this->showFriendsInfo();
-    }
+    	}
+
+	public function showRecommendations($friend_username){
+
+		// collect recommendations that match the username passed to this function
+		$recommended_rooms = Recommendation::where('user', '=', $friend_username)
+			                 	     ->get();
+		
+			
+		return View::make('pages.recommendations')->with('recommended_rooms', $recommended_rooms)
+							  ->with('friend', $friend_username);
+	}
 }

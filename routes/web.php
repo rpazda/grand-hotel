@@ -49,13 +49,14 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends/confirm/{friend}', 'FriendsController@confirmFriend');
 	Route::get('/friends/add/{friend}', 'FriendsController@addFriend');
 	Route::get('/friends/query/{user}', 'FriendsController@searchUsers');	
+	Route::get('/friends/recommends/{username}', 'FriendsController@showRecommendations');
 
 	Route::get('/account', 'AccountController@showAccountInfo');
 	Route::post('/account', 'AccountController@modifyAccountInfo');
 
 	Route::get('reservations/reserve/room={room_id}&date={date}', 'ReservationsController@reserveRoom');
 	Route::get('/reservations', 'ReservationsController@showReservations');
-	
+
 	Route::get('/reservations/recommendRoom/room={room_id}&date={date}', 'ReservationsController@recommendRoom');
 
 	Route::get('/reservations/deleteReservation/res_id={res_id}', 'ReservationsController@deleteReservation');
