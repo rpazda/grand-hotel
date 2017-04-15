@@ -53,7 +53,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/account', 'AccountController@showAccountInfo');
 	Route::post('/account', 'AccountController@modifyAccountInfo');
 
-	Route::get('reservations/reserve/room={roomm_id}&date={date}', 'ReservationsController@reserveRoom');
+	Route::get('reservations/reserve/room={room_id}&date={date}', 'ReservationsController@reserveRoom');
 	Route::get('/reservations', 'ReservationsController@showReservations');
 	
 	Route::get('/reservations/recommendRoom/room={room_id}&date={date}', 'ReservationsController@recommendRoom');
