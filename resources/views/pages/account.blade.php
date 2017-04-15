@@ -15,7 +15,7 @@
             <div class="row">
               <div class="form-group {{ $errors->has('firstName') ? ' has-error' : '' }}">
                 <div class="input-field col s6">
-                  <input id="firstName" type="text" class="validate" value="{{ $user->firstName }}">
+                  <input id="firstName" name="firstName" type="text" class="validate" value="{{ $user->firstName }}">
                   <label for="firstName">First Name</label>
                   @if ($errors->has('firstName'))
                       <span class="help-block">
@@ -27,7 +27,7 @@
 
               <div class="form-group {{ $errors->has('lastName') ? ' has-error' : '' }}">
                 <div class="input-field col s6">
-                  <input id="lastName" type="text" class="validate" value="{{ $user->lastName }}">
+                  <input id="lastName" name="lastName" type="text" class="validate" value="{{ $user->lastName }}">
                   <label for="lastName">Last Name</label>
                   @if ($errors->has('lastName'))
                       <span class="help-block">
@@ -41,7 +41,7 @@
             <div class="row">
               <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">  
                 <div class="input-field col s12">
-                  <input id="username" type="text" class="validate" value="{{ $user->username }}">
+                  <input disabled id="username" name="username" type="text" class="validate" value="{{ $user->username }}">
                   <label for="username">User Name</label>
                   @if ($errors->has('username'))
                       <span class="help-block">
@@ -55,7 +55,7 @@
             <div class="row">
               <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">  
                 <div class="input-field col s12">
-                  <input id="email" type="email" class="validate" value="{{ $user->email }}">
+                  <input id="email" name="email" type="email" class="validate" value="{{ $user->email }}">
                   <label for="email">Email</label>
                   @if ($errors->has('email'))
                       <span class="help-block">
@@ -69,7 +69,7 @@
             <div class="row">
               <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}"> 
                 <div class="input-field col s12">
-                  <input id="password" type="password" class="validate form-control">
+                  <input id="password" name="password" type="password" class="validate form-control">
                   <label for="password">New Password</label>
                   @if ($errors->has('password'))
                       <span class="help-block">
