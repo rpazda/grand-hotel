@@ -41,7 +41,7 @@
             <div class="row">
               <div class="form-group {{ $errors->has('username') ? ' has-error' : '' }}">  
                 <div class="input-field col s12">
-                  <input id="username" name="username" type="text" class="validate" value="{{ $user->username }}">
+                  <input disabled id="username" name="username" type="text" class="validate" value="{{ $user->username }}">
                   <label for="username">User Name</label>
                   @if ($errors->has('username'))
                       <span class="help-block">

@@ -10,6 +10,7 @@ use App\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UpdateAccountInfoRequest;
 
 class AccountController extends Controller{ 
  
@@ -20,13 +21,13 @@ class AccountController extends Controller{
 		return View::make('pages.account')->with('user', $user);
 	}
 
-	public function modifyAccountInfo(Request $account_form){
+	public function modifyAccountInfo(UpdateAccountInfoRequest $account_form){
 
 		$user = Auth::user();
 
 		$firstName = $account_form->input('firstName');
 		$lastName = $account_form->input('lastName');
-		$userName = $account_form->input('username');
+		//$userName = $account_form->input('username');
 		$email = $account_form->input('email');
 		if($account_form->input('password')){
 			$password = $account_form->input('password');
@@ -50,7 +51,7 @@ class AccountController extends Controller{
 
 		$user->firstName = $firstName;
 		$user->lastName = $lastName;
-		$user->username = $userName;
+		//$user->username = $userName;
 		$user->email = $email;
 		if($account_form->input('password')){
 			$user->password = bcrypt($password);
