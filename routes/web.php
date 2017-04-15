@@ -56,6 +56,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('reservations/reserve/room={roomm_id}&date={date}', 'ReservationsController@reserveRoom');
 	Route::get('/reservations', 'ReservationsController@showReservations');
 	
+	Route::get('/reservations/recommendRoom/room={room_id}&date={date}', 'ReservationsController@recommendRoom');
+
+	Route::get('/reservations/deleteReservation/res_id={res_id}', 'ReservationsController@deleteReservation');
+	
 	Route::get('/staff', function () {
 	    return view('pages/staff');
 	});
