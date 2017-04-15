@@ -24,6 +24,11 @@ class AccountController extends Controller{
 
 		$user = Auth::user();
 
+		$lastName = $account_form->input('lastName');
+		$email = $account_form->input('email');
+		if($account_form->input('password')){
+		}
+
 		// two parts: need to validate input from the account form;
 		// and need to select supplied data from the form to save it
 		// to the user's database record
@@ -39,6 +44,13 @@ class AccountController extends Controller{
                 //}
 		// how to link this with the view? return view(...)->withErrors(...)?
 		// 
+
+		$user->firstName = $firstName;
+		$user->lastName = $lastName;
+		$user->email = $email;
+		if($account_form->input('password')){
+			$user->password = bcrypt($password);
+		}
 		
 		$user->save();
 
