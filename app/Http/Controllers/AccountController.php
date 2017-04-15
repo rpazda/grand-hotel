@@ -50,6 +50,7 @@ class AccountController extends Controller{
 
 		$user->firstName = $firstName;
 		$user->lastName = $lastName;
+		$user->username = $userName;
 		$user->email = $email;
 		if($account_form->input('password')){
 			$user->password = bcrypt($password);
