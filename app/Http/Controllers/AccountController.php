@@ -24,9 +24,12 @@ class AccountController extends Controller{
 
 		$user = Auth::user();
 
+		$firstName = $account_form->input('firstName');
 		$lastName = $account_form->input('lastName');
+		$userName = $account_form->input('username');
 		$email = $account_form->input('email');
 		if($account_form->input('password')){
+			$password = $account_form->input('password');
 		}
 
 		// two parts: need to validate input from the account form;
