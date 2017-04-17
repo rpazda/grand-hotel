@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @if($reservation_data)
+                @if(count($reservation_data) > 0)
                     @foreach($reservation_data as $reservation)
 
                     <div style="display:none">
