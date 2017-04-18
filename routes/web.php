@@ -34,7 +34,8 @@ Route::post('register', 'Auth\RegisterController@register');
 
 Route::post('updateAccount', 'AccountController@modifyAccountInfo');
 
-Route::get('emailPassword', function(){ return view('auth.passwords.email'); });
+Route::get('emailPassword', 'Auth\ForgotPasswordController@requestEmailReset');
+Route::post('/password/reset', 'SearchController@showWelcome');
 
 Route::get('getUsers', 'FriendsController@SearchUsers');
 

@@ -13,7 +13,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('emailPassword') }}">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -32,7 +32,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" onclick=" function (){window.location.href = 'http://localhost:8000';}" class="btn btn-primary">
                                     Send Password Reset Link
                                 </button>
                             </div>
