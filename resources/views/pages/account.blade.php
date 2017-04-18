@@ -69,7 +69,7 @@
             <div class="row">
               <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}"> 
                 <div class="input-field col s12">
-                  <input id="password" name="password" type="password" class="validate form-control">
+                  <input id="password" name="password" type="password" value="password1A" class="validate form-control">
                   <label for="password">New Password</label>
                   @if ($errors->has('password'))
                       <span class="help-block">
@@ -83,7 +83,7 @@
             <div class="row">
               <div class="form-group"> 
                 <div class="input-field col s12">
-                  <input id="password-confirm" type="password" class="validate form-control">
+                  <input id="password-confirm" type="password" value="password1A" name="password_confirmation" class="validate form-control">
                   <label for="password-confirm">Confirm Password</label>
                 </div>
               </div>
