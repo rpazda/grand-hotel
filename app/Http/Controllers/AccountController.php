@@ -10,7 +10,6 @@ use App\Reservation;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-//use App\Http\Requests\UpdateAccountInfoRequest;
 
 class AccountController extends Controller{ 
 
