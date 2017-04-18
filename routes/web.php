@@ -42,6 +42,9 @@ Route::get('search', 'SearchController@showWelcome');
 Route::get('search/room/{room_id}', 'SearchController@showRoomInfo');
 Route::get('search/date/{date}', 'SearchController@showRoomsAvailable');
 
+Route::get('viewguestbookings', 'StaffController@showAllReservations');
+Route::get('checkin', 'StaffController@checkin');
+
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/friends', 'FriendsController@showFriendsInfo');
 	Route::get('/friends/remove/{loser}', 'FriendsController@removeFriend');

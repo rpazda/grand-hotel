@@ -52,8 +52,14 @@ class LoginController extends Controller
 
 	$request = Request::only('username','password');
        
+       //redirect login to staff if user is a staff member
+        if(Auth::attempt(['username' => $request['username'], 'password' => $request['password'], 'staff' => 1])){
+            
+            return redirect('/staff');
 
-        if (Auth::attempt(['username' => $request['username'], 'password' => $request['password']])) {
+        }
+        //else log user in normally
+        elseif (Auth::attempt(['username' => $request['username'], 'password' => $request['password']])) {
             
             return redirect('/home');
         }
