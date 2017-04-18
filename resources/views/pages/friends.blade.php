@@ -45,7 +45,8 @@
                         <th>Username</th>
                     </tr>
                 </thead>
-                <tbody>
+		<tbody>
+		@if(count($friends) > 0)
 		    @foreach($friends as $friend)
                     <tr>
                         <td>
@@ -63,8 +64,17 @@
 			            </td>
                         <td><a href="{{ $url = url('/friends/recommends/'.$deleteFriend) }}" class="btn cyan">View Recommendations</a></td>
                         <td><a href="{{action('FriendsController@removeFriend', ['deleteFriend' => $deleteFriend])}}" class="btn red">Remove Friend</a></td>
-                    </tr>
+		    </tr>
                     @endforeach
+		@else
+		    <tr>
+			<td>
+				<p> You have no friends :/</p>
+				<p> Do something about it! Search for other users below</p>
+			</td>
+		    </tr>
+
+		@endif
                 </tbody>
             </table>
 
