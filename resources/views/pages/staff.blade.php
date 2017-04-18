@@ -17,7 +17,7 @@
         </div>
         <div class="row">
             <center>
-            <a href="{{ url('checkin')}}" class="btn cyan" style="margin-top: 10px">
+            <a href="#checkin-modal" class="btn cyan" style="margin-top: 10px">
                 Check In Guests 
             </a>
             </center>
@@ -25,5 +25,22 @@
         
 
     </div>
+
+    <div id="checkin-modal" class="modal">
+            <div class="modal-content" id="checkin-modal-content">
+                <h6>Checkin hardware no yet configured!</h6>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Ok</a>
+            </div>
+        </div>
+
+    <script>
+
+        $('.modal').modal();
+
+        
+
+    </script>
 
 @endsection

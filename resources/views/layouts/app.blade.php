@@ -45,14 +45,23 @@
 	@section('header')
         <nav class="deep-purple">
             <div class="nav-wrapper">
-                
-		 <a href="{{ url('search')}}" class="brand-logo">&nbsp; Hotel California</a>
-                 <ul id="nav-mobile" class="right hide-on-med-and-down">
+        @if(Auth::guest())
+            <a href="{{ url('staff')}}" class="brand-logo">&nbsp; Hotel California</a>
+        @elseif(Auth::user()->staff == 1)
+            <a href="{{ url('staff')}}" class="brand-logo">&nbsp; Hotel California</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                     <li><a href="{{ url('account') }}">Account</a></li>
+                 </ul>
+        @else
+            <a href="{{ url('search')}}" class="brand-logo">&nbsp; Hotel California</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
                      <li><a href="{{ url('search') }}">Search</a></li>
                      <li><a href="{{ url('friends') }}">Friends</a></li>
                      <li><a href="{{ url('account') }}">Account</a></li>
                      <li><a href="{{ url('reservations') }}">Reservations</a></li>
                  </ul>
+        @endif
+                 
 	     </div>
          </nav>
 
