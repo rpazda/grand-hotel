@@ -53,7 +53,7 @@
                         @endif
 
                         @if($reservation->paid == 0)
-                            <td><a href="payment.html" class="btn green">Pay</a></td>
+                            <td><a href="{{ $url = url('payment.html') }}" class="btn green">Pay</a></td>
                         @else
                             <td></td>
                         @endif

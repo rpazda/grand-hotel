@@ -20,8 +20,6 @@
 // GETs http://localhost:8000/
 Route::get('/', 'SearchController@showWelcome');
 
-//Auth::routes();
-
 Route::get('/home', 'SearchController@showWelcome');
 
 Route::get('login', 'Auth\LoginController@requestInfo');
@@ -35,6 +33,8 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::post('updateAccount', 'AccountController@modifyAccountInfo');
 
 Route::get('emailPassword', function(){ return view('auth.passwords.email'); });
+
+Route::get('payment.html', function(){ return view('pages.payment');});
 
 Route::get('getUsers', 'FriendsController@SearchUsers');
 
